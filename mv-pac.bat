@@ -2,8 +2,8 @@ set produto=%1
 set sistema=%2
 set tipo=%3
 set item=%4
-set date=%date:~6%%date:~3,2%%date:~0,2%
-set datetime=%date:~6%-%date:~3,2%-%date:~0,2% %time:~0,2%:%time:~3,2%:%time:~6,2%
+set data=%date:~6%%date:~3,2%%date:~0,2%
+set datahora=%date:~6%-%date:~3,2%-%date:~0,2% %time:~0,2%:%time:~3,2%:%time:~6,2%
 
 e:
 cd e:\MV\repo\git\soulmv-workspace-dev
@@ -15,7 +15,7 @@ echo Manifest-Version: 1.0 >> MANIFEST.MF
 echo Ant-Version: Apache Ant 1.9.8 >> MANIFEST.MF
 echo Created-By: 1.8.0_252-b09 (Oracle Corporation) >> MANIFEST.MF
 echo Built-By: root >> MANIFEST.MF
-echo Built-Date: %datetime% >> MANIFEST.MF
+echo Built-Date: %datahora% >> MANIFEST.MF
 echo Implementation-Title: com.mvsistemas.mv2000.%sistema%.%tipo%.%item% >> MANIFEST.MF
 echo Implementation-Vendor: MV Sistemas S/A >> MANIFEST.MF
 echo Product-Version: null >> MANIFEST.MF
@@ -34,8 +34,8 @@ xcopy flex\com\mvsistemas\mv2000\%sistema%\%tipo%\%item%\views e:\MV\repo\git\so
 )
 
 cd e:\MV\repo\git\soulmv-workspace-dev
-if exist _%date%_%sistema%.%tipo%.%item%.zip del _%date%_%sistema%.%tipo%.%item%.zip /Q
-7z a _%date%_%sistema%.%tipo%.%item%.zip products
+if exist _%data%_%sistema%.%tipo%.%item%.zip del _%data%_%sistema%.%tipo%.%item%.zip /Q
+7z a _%data%_%sistema%.%tipo%.%item%.zip products
 
 rd products /S /Q
 
